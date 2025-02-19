@@ -7,9 +7,21 @@ public class Library {
     private int nextUserId = 1;
     private final HashMap<Integer, Users> users;
 
+    public HashMap<Integer, Books> getBooks() {
+        return books;
+    }
+
+    public HashMap<Integer, Users> getUsers() {
+        return users;
+    }
+
+
+
     private Library() {
         books = new HashMap<>();
         users = new HashMap<>();
+        Users Admin = new Users("Admin");
+        users.put(9999,Admin);
     }
 
     public void userRegister(String userName) {
