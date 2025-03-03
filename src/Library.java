@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class Library {
     private final HashMap<Integer, Books> books; // Now using book ID as key
     private static Library instance;
-    private int nextId = 1; // Unique ID generator
+    static private int nextId = 1; // Unique ID generator
     private int nextUserId = 1;
     private final HashMap<Integer, Users> users;
 
@@ -46,7 +46,7 @@ public class Library {
     public void addBook(String title, String author) {
         Books book = new Books(nextId, title, author); // Create book with unique ID
         books.put(nextId, book);
-        System.out.println("Added Book: " + book);
+        System.out.println("Added Book: " + book.getTitle() + " " + book.getAuthor());
         nextId++; // Increment ID for next book
     }
 
@@ -76,7 +76,7 @@ public class Library {
         Users user = users.get(userId);
 
         if (!book.isAvailable()) {
-            System.out.println("Book is already rented: " + book);
+            System.out.println("Book is already rented: " + book.getTitle());
             return;
         }
 
@@ -124,5 +124,11 @@ public class Library {
             return true;
         }
         return false; // ✅ Valid book and user
+    }
+
+    @Override
+    public String toString() {
+        return "The book title:" + books.get(nextId).getTitle() + ", author:" + books.get(nextId).getAuthor()
+                + ", publisher:" + books.get(nextId).getPublisher() + ", year:" + books.get(nextId).getYear();
     }
 }

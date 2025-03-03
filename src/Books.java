@@ -17,6 +17,9 @@ public class Books {
     }
 
     public Books(int nextId, String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.year = nextId;
     }
 
     public boolean isAvailable() {
